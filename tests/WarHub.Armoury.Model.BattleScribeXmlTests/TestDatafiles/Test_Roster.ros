@@ -94,5 +94,40 @@
       </categories>
       <forces/>
     </force>
+    <force id="4e8e-8bc5-b79a-bb2f" name="Test Force Type" entryId="cad557e3-279d-b9af-3fe0-5b92360fd0ab" catalogueId="a97a4f8d-a3d8-81e1-c4e8-1f4736b62879" catalogueRevision="1" catalogueName="Test Catalogue">
+      <rules>
+        <rule id="7e19b9df-fd63-10c1-36d2-5f9973119612" name="Main Rule" book="escaping &apos; &quot; &lt; &gt; &amp;" page="0" hidden="false">
+          <profiles/>
+          <rules/>
+          <infoLinks/>
+          <modifiers/>
+          <description>escaping &apos; &quot; &lt; &gt; &amp;</description>
+        </rule>
+      </rules>
+      <profiles/>
+      <categories>
+        <category id="de4e-9edc-bdc2-a1d1" name="Uncategorised" entryId="(No Category)">
+          <rules/>
+          <profiles/>
+          <selections/>
+        </category>
+        <category id="c6f0-e220-5b4c-f337" name="Modifier Test 0.0" entryId="896d8ba8-08ac-d2da-782d-a037ef086789">
+          <rules/>
+          <profiles/>
+          <selections/>
+        </category>
+        <category id="5ee9-c47b-3a29-8347" name="Repeat modifier test" entryId="cca20a2e-516b-5eb7-f5f3-7685495497dc">
+          <rules/>
+          <profiles/>
+          <selections/>
+        </category>
+        <category id="7c39-9d84-068d-55aa" name="Category Modifier Conditions" entryId="d99ab4b1-4076-e79a-c3f3-287fcd813394">
+          <rules/>
+          <profiles/>
+          <selections/>
+        </category>
+      </categories>
+      <forces/>
+    </force>
   </forces>
 </roster>

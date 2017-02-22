@@ -14,7 +14,7 @@
     </profileType>
   </profileTypes>
   <forceEntries>
-    <forceEntry id="cad557e3-279d-b9af-3fe0-5b92360fd0ab" name="Test Force Type" hidden="false">
+    <forceEntry id="cad557e3-279d-b9af-3fe0-5b92360fd0ab" name="Test Force Type" book="force book" page="force page" hidden="false">
       <profiles/>
       <rules/>
       <infoLinks/>

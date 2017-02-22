@@ -15,33 +15,1884 @@ namespace WarHub.Armoury.Model.BattleScribeXml
     using System.Collections.Generic;
 
 
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntryLink))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SelectionEntryGroup))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SelectionEntry))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ForceEntry))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CategoryEntry))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(InfoLink))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Rule))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Profile))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute("catalogue", Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public partial class Catalogue : Datablob
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class EntryBase
     {
 
-        private string gameSystemIdField;
+        private List<Profile> profilesField;
 
-        private string gameSystemRevisionField;
+        private List<Rule> rulesField;
+
+        private List<InfoLink> infoLinksField;
+
+        private List<Modifier> modifiersField;
+
+        private string idField;
+
+        private string nameField;
+
+        private string bookField;
+
+        private string pageField;
+
+        private bool hiddenField;
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string gameSystemId { get; set; }
+        public string id { get; set; }
 
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "nonNegativeInteger")]
-        public string gameSystemRevision { get; set; }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string book { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string page { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool hidden { get; set; }
+
+
+        public EntryBase()
+        {
+            this.modifiersField = new List<Modifier>();
+            this.infoLinksField = new List<InfoLink>();
+            this.rulesField = new List<Rule>();
+            this.profilesField = new List<Profile>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("profile", IsNullable = false)]
+        public List<Profile> profiles
+        {
+            get
+            {
+                return this.profilesField;
+            }
+            set
+            {
+                this.profilesField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("rule", IsNullable = false)]
+        public List<Rule> rules
+        {
+            get
+            {
+                return this.rulesField;
+            }
+            set
+            {
+                this.rulesField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("infoLink", IsNullable = false)]
+        public List<InfoLink> infoLinks
+        {
+            get
+            {
+                return this.infoLinksField;
+            }
+            set
+            {
+                this.infoLinksField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("modifier", IsNullable = false)]
+        public List<Modifier> modifiers
+        {
+            get
+            {
+                return this.modifiersField;
+            }
+            set
+            {
+                this.modifiersField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Profile : EntryBase
+    {
+
+        private List<Characteristic> characteristicsField;
+
+        private string profileTypeIdField;
+
+        private string profileTypeNameField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string profileTypeId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string profileTypeName { get; set; }
+
+
+        public Profile()
+        {
+            this.characteristicsField = new List<Characteristic>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("characteristic", IsNullable = false)]
+        public List<Characteristic> characteristics
+        {
+            get
+            {
+                return this.characteristicsField;
+            }
+            set
+            {
+                this.characteristicsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Characteristic
+    {
+
+        private string nameField;
+
+        private string characteristicTypeIdField;
+
+        private string valueField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string characteristicTypeId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string value { get; set; }
 
     }
 
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GameSystem))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Catalogue))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CostLimit))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Cost
+    {
+
+        private string nameField;
+
+        private string costTypeIdField;
+
+        private decimal valueField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string costTypeId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal value { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CostLimit : Cost
+    {
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ConditionGroup
+    {
+
+        private List<Condition> conditionsField;
+
+        private List<ConditionGroup> conditionGroupsField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public ConditionGroupKind type { get; set; }
+
+
+        public ConditionGroup()
+        {
+            this.conditionGroupsField = new List<ConditionGroup>();
+            this.conditionsField = new List<Condition>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("condition", IsNullable = false)]
+        public List<Condition> conditions
+        {
+            get
+            {
+                return this.conditionsField;
+            }
+            set
+            {
+                this.conditionsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("conditionGroup", IsNullable = false)]
+        public List<ConditionGroup> conditionGroups
+        {
+            get
+            {
+                return this.conditionGroupsField;
+            }
+            set
+            {
+                this.conditionGroupsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Condition : SelectorBase
+    {
+
+        private string childIdField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string childId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public ConditionKind type { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public enum ConditionKind
+    {
+
+        /// <remarks/>
+        lessThan,
+
+        /// <remarks/>
+        greaterThan,
+
+        /// <remarks/>
+        equalTo,
+
+        /// <remarks/>
+        notEqualTo,
+
+        /// <remarks/>
+        atLeast,
+
+        /// <remarks/>
+        atMost,
+
+        /// <remarks/>
+        instanceOf,
+
+        /// <remarks/>
+        notInstanceOf,
+    }
+
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Condition))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Repeat))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Constraint))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class SelectorBase
+    {
+
+        private string fieldField;
+
+        private string scopeField;
+
+        private decimal valueField;
+
+        private bool percentValueField;
+
+        private bool sharedField;
+
+        private bool includeChildSelectionsField;
+
+        private bool includeChildForcesField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string field { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string scope { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal value { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool percentValue { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool shared { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool includeChildSelections { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool includeChildForces { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Repeat : SelectorBase
+    {
+
+        private string childIdField;
+
+        private string repeatsField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string childId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "positiveInteger")]
+        public string repeats { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Constraint : SelectorBase
+    {
+
+        private string idField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string id { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public ConstraintKind type { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public enum ConstraintKind
+    {
+
+        /// <remarks/>
+        min,
+
+        /// <remarks/>
+        max,
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public enum ConditionGroupKind
+    {
+
+        /// <remarks/>
+        and,
+
+        /// <remarks/>
+        or,
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Modifier
+    {
+
+        private List<Repeat> repeatsField;
+
+        private List<Condition> conditionsField;
+
+        private List<ConditionGroup> conditionGroupsField;
+
+        private string fieldField;
+
+        private string valueField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public ModifierKind type { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string field { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string value { get; set; }
+
+
+        public Modifier()
+        {
+            this.conditionGroupsField = new List<ConditionGroup>();
+            this.conditionsField = new List<Condition>();
+            this.repeatsField = new List<Repeat>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("repeat", IsNullable = false)]
+        public List<Repeat> repeats
+        {
+            get
+            {
+                return this.repeatsField;
+            }
+            set
+            {
+                this.repeatsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("condition", IsNullable = false)]
+        public List<Condition> conditions
+        {
+            get
+            {
+                return this.conditionsField;
+            }
+            set
+            {
+                this.conditionsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("conditionGroup", IsNullable = false)]
+        public List<ConditionGroup> conditionGroups
+        {
+            get
+            {
+                return this.conditionGroupsField;
+            }
+            set
+            {
+                this.conditionGroupsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public enum ModifierKind
+    {
+
+        /// <remarks/>
+        set,
+
+        /// <remarks/>
+        increment,
+
+        /// <remarks/>
+        decrement,
+
+        /// <remarks/>
+        append,
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Rule : EntryBase
+    {
+
+        private string descriptionField;
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string description { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class InfoLink : EntryBase
+    {
+
+        private string targetIdField;
+
+        private bool typeFieldSpecified;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string targetId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public InfoLinkKind type { get; set; }
+
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool typeSpecified { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public enum InfoLinkKind
+    {
+
+        /// <remarks/>
+        profile,
+
+        /// <remarks/>
+        rule,
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class EntryLink : EntryBase
+    {
+
+        private List<Constraint> constraintsField;
+
+        private string targetIdField;
+
+        private string categoryEntryIdField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string targetId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public EntryLinkKind type { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string categoryEntryId { get; set; }
+
+
+        public EntryLink()
+        {
+            this.constraintsField = new List<Constraint>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
+        public List<Constraint> constraints
+        {
+            get
+            {
+                return this.constraintsField;
+            }
+            set
+            {
+                this.constraintsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public enum EntryLinkKind
+    {
+
+        /// <remarks/>
+        selectionEntry,
+
+        /// <remarks/>
+        selectionEntryGroup,
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class SelectionEntryGroup : EntryBase
+    {
+
+        private List<Constraint> constraintsField;
+
+        private List<SelectionEntry> selectionEntriesField;
+
+        private List<SelectionEntryGroup> selectionEntryGroupsField;
+
+        private List<EntryLink> entryLinksField;
+
+        private bool collectiveField;
+
+        private string defaultSelectionEntryIdField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool collective { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string defaultSelectionEntryId { get; set; }
+
+
+        public SelectionEntryGroup()
+        {
+            this.entryLinksField = new List<EntryLink>();
+            this.selectionEntryGroupsField = new List<SelectionEntryGroup>();
+            this.selectionEntriesField = new List<SelectionEntry>();
+            this.constraintsField = new List<Constraint>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
+        public List<Constraint> constraints
+        {
+            get
+            {
+                return this.constraintsField;
+            }
+            set
+            {
+                this.constraintsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntry", IsNullable = false)]
+        public List<SelectionEntry> selectionEntries
+        {
+            get
+            {
+                return this.selectionEntriesField;
+            }
+            set
+            {
+                this.selectionEntriesField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntryGroup", IsNullable = false)]
+        public List<SelectionEntryGroup> selectionEntryGroups
+        {
+            get
+            {
+                return this.selectionEntryGroupsField;
+            }
+            set
+            {
+                this.selectionEntryGroupsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("entryLink", IsNullable = false)]
+        public List<EntryLink> entryLinks
+        {
+            get
+            {
+                return this.entryLinksField;
+            }
+            set
+            {
+                this.entryLinksField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class SelectionEntry : EntryBase
+    {
+
+        private List<Constraint> constraintsField;
+
+        private List<SelectionEntry> selectionEntriesField;
+
+        private List<SelectionEntryGroup> selectionEntryGroupsField;
+
+        private List<EntryLink> entryLinksField;
+
+        private List<Cost> costsField;
+
+        private bool collectiveField;
+
+        private string categoryEntryIdField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool collective { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string categoryEntryId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public SelectionEntryKind type { get; set; }
+
+
+        public SelectionEntry()
+        {
+            this.costsField = new List<Cost>();
+            this.entryLinksField = new List<EntryLink>();
+            this.selectionEntryGroupsField = new List<SelectionEntryGroup>();
+            this.selectionEntriesField = new List<SelectionEntry>();
+            this.constraintsField = new List<Constraint>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
+        public List<Constraint> constraints
+        {
+            get
+            {
+                return this.constraintsField;
+            }
+            set
+            {
+                this.constraintsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntry", IsNullable = false)]
+        public List<SelectionEntry> selectionEntries
+        {
+            get
+            {
+                return this.selectionEntriesField;
+            }
+            set
+            {
+                this.selectionEntriesField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntryGroup", IsNullable = false)]
+        public List<SelectionEntryGroup> selectionEntryGroups
+        {
+            get
+            {
+                return this.selectionEntryGroupsField;
+            }
+            set
+            {
+                this.selectionEntryGroupsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("entryLink", IsNullable = false)]
+        public List<EntryLink> entryLinks
+        {
+            get
+            {
+                return this.entryLinksField;
+            }
+            set
+            {
+                this.entryLinksField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 4)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("cost", IsNullable = false)]
+        public List<Cost> costs
+        {
+            get
+            {
+                return this.costsField;
+            }
+            set
+            {
+                this.costsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public enum SelectionEntryKind
+    {
+
+        /// <remarks/>
+        upgrade,
+
+        /// <remarks/>
+        model,
+
+        /// <remarks/>
+        unit,
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ForceEntry : EntryBase
+    {
+
+        private List<Constraint> constraintsField;
+
+        private List<CategoryEntry> categoryEntriesField;
+
+        private List<ForceEntry> forceEntriesField;
+
+        public ForceEntry()
+        {
+            this.forceEntriesField = new List<ForceEntry>();
+            this.categoryEntriesField = new List<CategoryEntry>();
+            this.constraintsField = new List<Constraint>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
+        public List<Constraint> constraints
+        {
+            get
+            {
+                return this.constraintsField;
+            }
+            set
+            {
+                this.constraintsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("categoryEntry", IsNullable = false)]
+        public List<CategoryEntry> categoryEntries
+        {
+            get
+            {
+                return this.categoryEntriesField;
+            }
+            set
+            {
+                this.categoryEntriesField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("forceEntry", IsNullable = false)]
+        public List<ForceEntry> forceEntries
+        {
+            get
+            {
+                return this.forceEntriesField;
+            }
+            set
+            {
+                this.forceEntriesField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CategoryEntry : EntryBase
+    {
+
+        private List<Constraint> constraintsField;
+
+        public CategoryEntry()
+        {
+            this.constraintsField = new List<Constraint>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
+        public List<Constraint> constraints
+        {
+            get
+            {
+                return this.constraintsField;
+            }
+            set
+            {
+                this.constraintsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CharacteristicType
+    {
+
+        private string idField;
+
+        private string nameField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string id { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CharacteristicTypeList
+    {
+
+        private List<CharacteristicType> characteristicTypeField;
+
+        public CharacteristicTypeList()
+        {
+            this.characteristicTypeField = new List<CharacteristicType>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("characteristicType", Order = 0)]
+        public List<CharacteristicType> characteristicType
+        {
+            get
+            {
+                return this.characteristicTypeField;
+            }
+            set
+            {
+                this.characteristicTypeField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ProfileType
+    {
+
+        private List<CharacteristicType> characteristicTypesField;
+
+        private string idField;
+
+        private string nameField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string id { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name { get; set; }
+
+
+        public ProfileType()
+        {
+            this.characteristicTypesField = new List<CharacteristicType>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("characteristicType", IsNullable = false)]
+        public List<CharacteristicType> characteristicTypes
+        {
+            get
+            {
+                return this.characteristicTypesField;
+            }
+            set
+            {
+                this.characteristicTypesField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ProfileTypeList
+    {
+
+        private List<ProfileType> profileTypeField;
+
+        public ProfileTypeList()
+        {
+            this.profileTypeField = new List<ProfileType>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("profileType", Order = 0)]
+        public List<ProfileType> profileType
+        {
+            get
+            {
+                return this.profileTypeField;
+            }
+            set
+            {
+                this.profileTypeField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CostType
+    {
+
+        private string idField;
+
+        private string nameField;
+
+        private decimal defaultCostLimitField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string id { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name { get; set; }
+
+
+        public CostType()
+        {
+            this.defaultCostLimitField = ((decimal)(0.0m));
+        }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal defaultCostLimit
+        {
+            get
+            {
+                return this.defaultCostLimitField;
+            }
+            set
+            {
+                this.defaultCostLimitField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CostTypeList
+    {
+
+        private List<CostType> costTypeField;
+
+        public CostTypeList()
+        {
+            this.costTypeField = new List<CostType>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("costType", Order = 0)]
+        public List<CostType> costType
+        {
+            get
+            {
+                return this.costTypeField;
+            }
+            set
+            {
+                this.costTypeField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CharacteristicList
+    {
+
+        private List<Characteristic> characteristicField;
+
+        public CharacteristicList()
+        {
+            this.characteristicField = new List<Characteristic>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("characteristic", Order = 0)]
+        public List<Characteristic> characteristic
+        {
+            get
+            {
+                return this.characteristicField;
+            }
+            set
+            {
+                this.characteristicField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ProfileList
+    {
+
+        private List<Profile> profileField;
+
+        public ProfileList()
+        {
+            this.profileField = new List<Profile>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("profile", Order = 0)]
+        public List<Profile> profile
+        {
+            get
+            {
+                return this.profileField;
+            }
+            set
+            {
+                this.profileField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class RuleList
+    {
+
+        private List<Rule> ruleField;
+
+        public RuleList()
+        {
+            this.ruleField = new List<Rule>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("rule", Order = 0)]
+        public List<Rule> rule
+        {
+            get
+            {
+                return this.ruleField;
+            }
+            set
+            {
+                this.ruleField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class InfoLinkList
+    {
+
+        private List<InfoLink> infoLinkField;
+
+        public InfoLinkList()
+        {
+            this.infoLinkField = new List<InfoLink>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("infoLink", Order = 0)]
+        public List<InfoLink> infoLink
+        {
+            get
+            {
+                return this.infoLinkField;
+            }
+            set
+            {
+                this.infoLinkField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CategoryEntryList
+    {
+
+        private List<CategoryEntry> categoryEntryField;
+
+        public CategoryEntryList()
+        {
+            this.categoryEntryField = new List<CategoryEntry>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("categoryEntry", Order = 0)]
+        public List<CategoryEntry> categoryEntry
+        {
+            get
+            {
+                return this.categoryEntryField;
+            }
+            set
+            {
+                this.categoryEntryField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ForceEntryList
+    {
+
+        private List<ForceEntry> forceEntryField;
+
+        public ForceEntryList()
+        {
+            this.forceEntryField = new List<ForceEntry>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("forceEntry", Order = 0)]
+        public List<ForceEntry> forceEntry
+        {
+            get
+            {
+                return this.forceEntryField;
+            }
+            set
+            {
+                this.forceEntryField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CostList
+    {
+
+        private List<Cost> costField;
+
+        public CostList()
+        {
+            this.costField = new List<Cost>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("cost", Order = 0)]
+        public List<Cost> cost
+        {
+            get
+            {
+                return this.costField;
+            }
+            set
+            {
+                this.costField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class SelectionEntryList
+    {
+
+        private List<SelectionEntry> selectionEntryField;
+
+        public SelectionEntryList()
+        {
+            this.selectionEntryField = new List<SelectionEntry>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("selectionEntry", Order = 0)]
+        public List<SelectionEntry> selectionEntry
+        {
+            get
+            {
+                return this.selectionEntryField;
+            }
+            set
+            {
+                this.selectionEntryField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "SelectionEntryGroupList")]
+    [System.Xml.Serialization.XmlRootAttribute("SelectionEntryGroupList", Namespace = "", IsNullable = true)]
+    public partial class SelectionEntryGroupList1
+    {
+
+        private List<SelectionEntryGroup> selectionEntryGroupField;
+
+        public SelectionEntryGroupList1()
+        {
+            this.selectionEntryGroupField = new List<SelectionEntryGroup>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("selectionEntryGroup", Order = 0)]
+        public List<SelectionEntryGroup> selectionEntryGroup
+        {
+            get
+            {
+                return this.selectionEntryGroupField;
+            }
+            set
+            {
+                this.selectionEntryGroupField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class EntryLinkList
+    {
+
+        private List<EntryLink> entryLinkField;
+
+        public EntryLinkList()
+        {
+            this.entryLinkField = new List<EntryLink>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("entryLink", Order = 0)]
+        public List<EntryLink> entryLink
+        {
+            get
+            {
+                return this.entryLinkField;
+            }
+            set
+            {
+                this.entryLinkField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ConstraintList
+    {
+
+        private List<Constraint> constraintField;
+
+        public ConstraintList()
+        {
+            this.constraintField = new List<Constraint>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("constraint", Order = 0)]
+        public List<Constraint> constraint
+        {
+            get
+            {
+                return this.constraintField;
+            }
+            set
+            {
+                this.constraintField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ModifierList
+    {
+
+        private List<Modifier> modifierField;
+
+        public ModifierList()
+        {
+            this.modifierField = new List<Modifier>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("modifier", Order = 0)]
+        public List<Modifier> modifier
+        {
+            get
+            {
+                return this.modifierField;
+            }
+            set
+            {
+                this.modifierField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class RepeatList
+    {
+
+        private List<Repeat> repeatField;
+
+        public RepeatList()
+        {
+            this.repeatField = new List<Repeat>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("repeat", Order = 0)]
+        public List<Repeat> repeat
+        {
+            get
+            {
+                return this.repeatField;
+            }
+            set
+            {
+                this.repeatField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ConditionList
+    {
+
+        private List<Condition> conditionField;
+
+        public ConditionList()
+        {
+            this.conditionField = new List<Condition>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("condition", Order = 0)]
+        public List<Condition> condition
+        {
+            get
+            {
+                return this.conditionField;
+            }
+            set
+            {
+                this.conditionField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "ConditionGroupList")]
+    [System.Xml.Serialization.XmlRootAttribute("ConditionGroupList", Namespace = "", IsNullable = true)]
+    public partial class ConditionGroupList1
+    {
+
+        private List<ConditionGroup> conditionGroupField;
+
+        public ConditionGroupList1()
+        {
+            this.conditionGroupField = new List<ConditionGroup>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("conditionGroup", Order = 0)]
+        public List<ConditionGroup> conditionGroup
+        {
+            get
+            {
+                return this.conditionGroupField;
+            }
+            set
+            {
+                this.conditionGroupField = value;
+            }
+        }
+    }
+
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Selection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Category))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Force))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class RosterItemBase
+    {
+
+        private List<Rule> rulesField;
+
+        private List<Profile> profilesField;
+
+        private string idField;
+
+        private string nameField;
+
+        private string entryIdField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string id { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string entryId { get; set; }
+
+
+        public RosterItemBase()
+        {
+            this.profilesField = new List<Profile>();
+            this.rulesField = new List<Rule>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("rule", IsNullable = false)]
+        public List<Rule> rules
+        {
+            get
+            {
+                return this.rulesField;
+            }
+            set
+            {
+                this.rulesField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("profile", IsNullable = false)]
+        public List<Profile> profiles
+        {
+            get
+            {
+                return this.profilesField;
+            }
+            set
+            {
+                this.profilesField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Selection : RosterItemBase
+    {
+
+        private List<Selection> selectionsField;
+
+        private List<Cost> costsField;
+
+        private string entryGroupIdField;
+
+        private string bookField;
+
+        private string pageField;
+
+        private string numberField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string entryGroupId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string book { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string page { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "integer")]
+        public string number { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public SelectionEntryKind type { get; set; }
+
+
+        public Selection()
+        {
+            this.costsField = new List<Cost>();
+            this.selectionsField = new List<Selection>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("selection", IsNullable = false)]
+        public List<Selection> selections
+        {
+            get
+            {
+                return this.selectionsField;
+            }
+            set
+            {
+                this.selectionsField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("cost", IsNullable = false)]
+        public List<Cost> costs
+        {
+            get
+            {
+                return this.costsField;
+            }
+            set
+            {
+                this.costsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Category : RosterItemBase
+    {
+
+        private List<Selection> selectionsField;
+
+        public Category()
+        {
+            this.selectionsField = new List<Selection>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("selection", IsNullable = false)]
+        public List<Selection> selections
+        {
+            get
+            {
+                return this.selectionsField;
+            }
+            set
+            {
+                this.selectionsField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Force : RosterItemBase
+    {
+
+        private List<Category> categoriesField;
+
+        private List<Force> forcesField;
+
+        private string catalogueIdField;
+
+        private string catalogueRevisionField;
+
+        private string catalogueNameField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string catalogueId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "nonNegativeInteger")]
+        public string catalogueRevision { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string catalogueName { get; set; }
+
+
+        public Force()
+        {
+            this.forcesField = new List<Force>();
+            this.categoriesField = new List<Category>();
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("category", IsNullable = false)]
+        public List<Category> categories
+        {
+            get
+            {
+                return this.categoriesField;
+            }
+            set
+            {
+                this.categoriesField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("force", IsNullable = false)]
+        public List<Force> forces
+        {
+            get
+            {
+                return this.forcesField;
+            }
+            set
+            {
+                this.forcesField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CostLimitList
+    {
+
+        private List<CostLimit> costLimitField;
+
+        public CostLimitList()
+        {
+            this.costLimitField = new List<CostLimit>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("costLimit", Order = 0)]
+        public List<CostLimit> costLimit
+        {
+            get
+            {
+                return this.costLimitField;
+            }
+            set
+            {
+                this.costLimitField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class ForceList
+    {
+
+        private List<Force> forceField;
+
+        public ForceList()
+        {
+            this.forceField = new List<Force>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("force", Order = 0)]
+        public List<Force> force
+        {
+            get
+            {
+                return this.forceField;
+            }
+            set
+            {
+                this.forceField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class CategoryList
+    {
+
+        private List<Category> categoryField;
+
+        public CategoryList()
+        {
+            this.categoryField = new List<Category>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("category", Order = 0)]
+        public List<Category> category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
+            }
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "SelectionList")]
+    [System.Xml.Serialization.XmlRootAttribute("SelectionList", Namespace = "", IsNullable = true)]
+    public partial class SelectionList1
+    {
+
+        private List<Selection> selectionField;
+
+        public SelectionList1()
+        {
+            this.selectionField = new List<Selection>();
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("selection", Order = 0)]
+        public List<Selection> selection
+        {
+            get
+            {
+                return this.selectionField;
+            }
+            set
+            {
+                this.selectionField = value;
+            }
+        }
+    }
+
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Catalogue))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GameSystem))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
     public partial class Datablob
     {
 
@@ -303,923 +2154,82 @@ namespace WarHub.Armoury.Model.BattleScribeXml
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Profile : EntryBase
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Catalogue : Datablob
     {
 
-        private List<Characteristic> characteristicsField;
+        private string gameSystemIdField;
 
-        private string profileTypeIdField;
-
-        private string profileTypeNameField;
+        private string gameSystemRevisionField;
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string profileTypeId { get; set; }
+        public string gameSystemId { get; set; }
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string profileTypeName { get; set; }
-
-
-        public Profile()
-        {
-            this.characteristicsField = new List<Characteristic>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("characteristic", IsNullable = false)]
-        public List<Characteristic> characteristics
-        {
-            get
-            {
-                return this.characteristicsField;
-            }
-            set
-            {
-                this.characteristicsField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Characteristic
-    {
-
-        private string nameField;
-
-        private string characteristicTypeIdField;
-
-        private string valueField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string characteristicTypeId { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string value { get; set; }
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "nonNegativeInteger")]
+        public string gameSystemRevision { get; set; }
 
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CharacteristicType
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class GameSystem : Datablob
     {
-
-        private string idField;
-
-        private string nameField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name { get; set; }
-
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ProfileType
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
+    public partial class Roster
     {
-
-        private List<CharacteristicType> characteristicTypesField;
-
-        private string idField;
-
-        private string nameField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name { get; set; }
-
-
-        public ProfileType()
-        {
-            this.characteristicTypesField = new List<CharacteristicType>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("characteristicType", IsNullable = false)]
-        public List<CharacteristicType> characteristicTypes
-        {
-            get
-            {
-                return this.characteristicTypesField;
-            }
-            set
-            {
-                this.characteristicTypesField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CostType
-    {
-
-        private string idField;
-
-        private string nameField;
-
-        private decimal defaultCostLimitField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name { get; set; }
-
-
-        public CostType()
-        {
-            this.defaultCostLimitField = ((decimal)(0.0m));
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal defaultCostLimit
-        {
-            get
-            {
-                return this.defaultCostLimitField;
-            }
-            set
-            {
-                this.defaultCostLimitField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Cost
-    {
-
-        private string nameField;
-
-        private string costTypeIdField;
-
-        private decimal valueField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string costTypeId { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal value { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ConditionGroup
-    {
-
-        private List<Condition> conditionsField;
-
-        private List<ConditionGroup> conditionGroupsField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ConditionGroupKind type { get; set; }
-
-
-        public ConditionGroup()
-        {
-            this.conditionGroupsField = new List<ConditionGroup>();
-            this.conditionsField = new List<Condition>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("condition", IsNullable = false)]
-        public List<Condition> conditions
-        {
-            get
-            {
-                return this.conditionsField;
-            }
-            set
-            {
-                this.conditionsField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("conditionGroup", IsNullable = false)]
-        public List<ConditionGroup> conditionGroups
-        {
-            get
-            {
-                return this.conditionGroupsField;
-            }
-            set
-            {
-                this.conditionGroupsField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Condition : SelectorBase
-    {
-
-        private string childIdField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string childId { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ConditionKind type { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public enum ConditionKind
-    {
-
-        /// <remarks/>
-        lessThan,
-
-        /// <remarks/>
-        greaterThan,
-
-        /// <remarks/>
-        equalTo,
-
-        /// <remarks/>
-        notEqualTo,
-
-        /// <remarks/>
-        atLeast,
-
-        /// <remarks/>
-        atMost,
-
-        /// <remarks/>
-        instanceOf,
-
-        /// <remarks/>
-        notInstanceOf,
-    }
-
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Condition))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Repeat))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Constraint))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class SelectorBase
-    {
-
-        private string fieldField;
-
-        private string scopeField;
-
-        private decimal valueField;
-
-        private bool percentValueField;
-
-        private bool sharedField;
-
-        private bool includeChildSelectionsField;
-
-        private bool includeChildForcesField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string field { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string scope { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal value { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool percentValue { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool shared { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool includeChildSelections { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool includeChildForces { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Repeat : SelectorBase
-    {
-
-        private string childIdField;
-
-        private string repeatsField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string childId { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "positiveInteger")]
-        public string repeats { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Constraint : SelectorBase
-    {
-
-        private string idField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ConstraintKind type { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public enum ConstraintKind
-    {
-
-        /// <remarks/>
-        min,
-
-        /// <remarks/>
-        max,
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public enum ConditionGroupKind
-    {
-
-        /// <remarks/>
-        and,
-
-        /// <remarks/>
-        or,
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Modifier
-    {
-
-        private List<Repeat> repeatsField;
-
-        private List<Condition> conditionsField;
-
-        private List<ConditionGroup> conditionGroupsField;
-
-        private string fieldField;
-
-        private string valueField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ModifierKind type { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string field { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string value { get; set; }
-
-
-        public Modifier()
-        {
-            this.conditionGroupsField = new List<ConditionGroup>();
-            this.conditionsField = new List<Condition>();
-            this.repeatsField = new List<Repeat>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("repeat", IsNullable = false)]
-        public List<Repeat> repeats
-        {
-            get
-            {
-                return this.repeatsField;
-            }
-            set
-            {
-                this.repeatsField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("condition", IsNullable = false)]
-        public List<Condition> conditions
-        {
-            get
-            {
-                return this.conditionsField;
-            }
-            set
-            {
-                this.conditionsField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("conditionGroup", IsNullable = false)]
-        public List<ConditionGroup> conditionGroups
-        {
-            get
-            {
-                return this.conditionGroupsField;
-            }
-            set
-            {
-                this.conditionGroupsField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public enum ModifierKind
-    {
-
-        /// <remarks/>
-        set,
-
-        /// <remarks/>
-        increment,
-
-        /// <remarks/>
-        decrement,
-
-        /// <remarks/>
-        append,
-    }
-
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntryLink))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SelectionEntryGroup))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SelectionEntry))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ForceEntry))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CategoryEntry))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(InfoLink))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Rule))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Profile))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class EntryBase
-    {
-
-        private List<Profile> profilesField;
-
-        private List<Rule> rulesField;
-
-        private List<InfoLink> infoLinksField;
-
-        private List<Modifier> modifiersField;
-
-        private string idField;
-
-        private string nameField;
-
-        private string bookField;
-
-        private string pageField;
-
-        private bool hiddenField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string book { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string page { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool hidden { get; set; }
-
-
-        public EntryBase()
-        {
-            this.modifiersField = new List<Modifier>();
-            this.infoLinksField = new List<InfoLink>();
-            this.rulesField = new List<Rule>();
-            this.profilesField = new List<Profile>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("profile", IsNullable = false)]
-        public List<Profile> profiles
-        {
-            get
-            {
-                return this.profilesField;
-            }
-            set
-            {
-                this.profilesField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("rule", IsNullable = false)]
-        public List<Rule> rules
-        {
-            get
-            {
-                return this.rulesField;
-            }
-            set
-            {
-                this.rulesField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("infoLink", IsNullable = false)]
-        public List<InfoLink> infoLinks
-        {
-            get
-            {
-                return this.infoLinksField;
-            }
-            set
-            {
-                this.infoLinksField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 3)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("modifier", IsNullable = false)]
-        public List<Modifier> modifiers
-        {
-            get
-            {
-                return this.modifiersField;
-            }
-            set
-            {
-                this.modifiersField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class Rule : EntryBase
-    {
-
-        private string descriptionField;
-
-        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
-        public string description { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class InfoLink : EntryBase
-    {
-
-        private string targetIdField;
-
-        private bool typeFieldSpecified;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string targetId { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public InfoLinkKind type { get; set; }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool typeSpecified { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public enum InfoLinkKind
-    {
-
-        /// <remarks/>
-        profile,
-
-        /// <remarks/>
-        rule,
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class EntryLink : EntryBase
-    {
-
-        private List<Constraint> constraintsField;
-
-        private string targetIdField;
-
-        private string categoryEntryIdField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string targetId { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public EntryLinkKind type { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string categoryEntryId { get; set; }
-
-
-        public EntryLink()
-        {
-            this.constraintsField = new List<Constraint>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
-        public List<Constraint> constraints
-        {
-            get
-            {
-                return this.constraintsField;
-            }
-            set
-            {
-                this.constraintsField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public enum EntryLinkKind
-    {
-
-        /// <remarks/>
-        selectionEntry,
-
-        /// <remarks/>
-        selectionEntryGroup,
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class SelectionEntryGroup : EntryBase
-    {
-
-        private List<Constraint> constraintsField;
-
-        private List<SelectionEntry> selectionEntriesField;
-
-        private List<SelectionEntryGroup> selectionEntryGroupsField;
-
-        private List<EntryLink> entryLinksField;
-
-        private bool collectiveField;
-
-        private string defaultSelectionEntryIdField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool collective { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string defaultSelectionEntryId { get; set; }
-
-
-        public SelectionEntryGroup()
-        {
-            this.entryLinksField = new List<EntryLink>();
-            this.selectionEntryGroupsField = new List<SelectionEntryGroup>();
-            this.selectionEntriesField = new List<SelectionEntry>();
-            this.constraintsField = new List<Constraint>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
-        public List<Constraint> constraints
-        {
-            get
-            {
-                return this.constraintsField;
-            }
-            set
-            {
-                this.constraintsField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntry", IsNullable = false)]
-        public List<SelectionEntry> selectionEntries
-        {
-            get
-            {
-                return this.selectionEntriesField;
-            }
-            set
-            {
-                this.selectionEntriesField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntryGroup", IsNullable = false)]
-        public List<SelectionEntryGroup> selectionEntryGroups
-        {
-            get
-            {
-                return this.selectionEntryGroupsField;
-            }
-            set
-            {
-                this.selectionEntryGroupsField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 3)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("entryLink", IsNullable = false)]
-        public List<EntryLink> entryLinks
-        {
-            get
-            {
-                return this.entryLinksField;
-            }
-            set
-            {
-                this.entryLinksField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class SelectionEntry : EntryBase
-    {
-
-        private List<Constraint> constraintsField;
-
-        private List<SelectionEntry> selectionEntriesField;
-
-        private List<SelectionEntryGroup> selectionEntryGroupsField;
-
-        private List<EntryLink> entryLinksField;
 
         private List<Cost> costsField;
 
-        private bool collectiveField;
+        private List<CostLimit> costLimitsField;
 
-        private string categoryEntryIdField;
+        private List<Force> forcesField;
+
+        private string idField;
+
+        private string nameField;
+
+        private string battleScribeVersionField;
+
+        private string gameSystemIdField;
+
+        private string gameSystemNameField;
+
+        private string gameSystemRevisionField;
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool collective { get; set; }
+        public string id { get; set; }
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string categoryEntryId { get; set; }
+        public string name { get; set; }
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public SelectionEntryKind type { get; set; }
+        public string battleScribeVersion { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string gameSystemId { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string gameSystemName { get; set; }
+
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "nonNegativeInteger")]
+        public string gameSystemRevision { get; set; }
 
 
-        public SelectionEntry()
+        public Roster()
         {
+            this.forcesField = new List<Force>();
+            this.costLimitsField = new List<CostLimit>();
             this.costsField = new List<Cost>();
-            this.entryLinksField = new List<EntryLink>();
-            this.selectionEntryGroupsField = new List<SelectionEntryGroup>();
-            this.selectionEntriesField = new List<SelectionEntry>();
-            this.constraintsField = new List<Constraint>();
         }
 
         [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
-        public List<Constraint> constraints
-        {
-            get
-            {
-                return this.constraintsField;
-            }
-            set
-            {
-                this.constraintsField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntry", IsNullable = false)]
-        public List<SelectionEntry> selectionEntries
-        {
-            get
-            {
-                return this.selectionEntriesField;
-            }
-            set
-            {
-                this.selectionEntriesField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("selectionEntryGroup", IsNullable = false)]
-        public List<SelectionEntryGroup> selectionEntryGroups
-        {
-            get
-            {
-                return this.selectionEntryGroupsField;
-            }
-            set
-            {
-                this.selectionEntryGroupsField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 3)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("entryLink", IsNullable = false)]
-        public List<EntryLink> entryLinks
-        {
-            get
-            {
-                return this.entryLinksField;
-            }
-            set
-            {
-                this.entryLinksField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 4)]
         [System.Xml.Serialization.XmlArrayItemAttribute("cost", IsNullable = false)]
         public List<Cost> costs
         {
@@ -1232,646 +2242,32 @@ namespace WarHub.Armoury.Model.BattleScribeXml
                 this.costsField = value;
             }
         }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public enum SelectionEntryKind
-    {
-
-        /// <remarks/>
-        upgrade,
-
-        /// <remarks/>
-        model,
-
-        /// <remarks/>
-        unit,
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ForceEntry : EntryBase
-    {
-
-        private List<Constraint> constraintsField;
-
-        private List<CategoryEntry> categoryEntriesField;
-
-        private List<ForceEntry> forceEntriesField;
-
-        public ForceEntry()
-        {
-            this.forceEntriesField = new List<ForceEntry>();
-            this.categoryEntriesField = new List<CategoryEntry>();
-            this.constraintsField = new List<Constraint>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
-        public List<Constraint> constraints
-        {
-            get
-            {
-                return this.constraintsField;
-            }
-            set
-            {
-                this.constraintsField = value;
-            }
-        }
 
         [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("categoryEntry", IsNullable = false)]
-        public List<CategoryEntry> categoryEntries
+        [System.Xml.Serialization.XmlArrayItemAttribute("costLimit", IsNullable = false)]
+        public List<CostLimit> costLimits
         {
             get
             {
-                return this.categoryEntriesField;
+                return this.costLimitsField;
             }
             set
             {
-                this.categoryEntriesField = value;
+                this.costLimitsField = value;
             }
         }
 
         [System.Xml.Serialization.XmlArrayAttribute(Order = 2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("forceEntry", IsNullable = false)]
-        public List<ForceEntry> forceEntries
+        [System.Xml.Serialization.XmlArrayItemAttribute("force", IsNullable = false)]
+        public List<Force> forces
         {
             get
             {
-                return this.forceEntriesField;
+                return this.forcesField;
             }
             set
             {
-                this.forceEntriesField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CategoryEntry : EntryBase
-    {
-
-        private List<Constraint> constraintsField;
-
-        public CategoryEntry()
-        {
-            this.constraintsField = new List<Constraint>();
-        }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("constraint", IsNullable = false)]
-        public List<Constraint> constraints
-        {
-            get
-            {
-                return this.constraintsField;
-            }
-            set
-            {
-                this.constraintsField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute("gameSystem", Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = false)]
-    public partial class GameSystem : Datablob
-    {
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CharacteristicTypeList
-    {
-
-        private List<CharacteristicType> characteristicTypeField;
-
-        public CharacteristicTypeList()
-        {
-            this.characteristicTypeField = new List<CharacteristicType>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("characteristicType", Order = 0)]
-        public List<CharacteristicType> characteristicType
-        {
-            get
-            {
-                return this.characteristicTypeField;
-            }
-            set
-            {
-                this.characteristicTypeField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ProfileTypeList
-    {
-
-        private List<ProfileType> profileTypeField;
-
-        public ProfileTypeList()
-        {
-            this.profileTypeField = new List<ProfileType>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("profileType", Order = 0)]
-        public List<ProfileType> profileType
-        {
-            get
-            {
-                return this.profileTypeField;
-            }
-            set
-            {
-                this.profileTypeField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CostTypeList
-    {
-
-        private List<CostType> costTypeField;
-
-        public CostTypeList()
-        {
-            this.costTypeField = new List<CostType>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("costType", Order = 0)]
-        public List<CostType> costType
-        {
-            get
-            {
-                return this.costTypeField;
-            }
-            set
-            {
-                this.costTypeField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CharacteristicList
-    {
-
-        private List<Characteristic> characteristicField;
-
-        public CharacteristicList()
-        {
-            this.characteristicField = new List<Characteristic>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("characteristic", Order = 0)]
-        public List<Characteristic> characteristic
-        {
-            get
-            {
-                return this.characteristicField;
-            }
-            set
-            {
-                this.characteristicField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "ProfileList", Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute("ProfileList", Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ProfileList1
-    {
-
-        private List<Profile> profileField;
-
-        public ProfileList1()
-        {
-            this.profileField = new List<Profile>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("profile", Order = 0)]
-        public List<Profile> profile
-        {
-            get
-            {
-                return this.profileField;
-            }
-            set
-            {
-                this.profileField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class RuleList
-    {
-
-        private List<Rule> ruleField;
-
-        public RuleList()
-        {
-            this.ruleField = new List<Rule>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("rule", Order = 0)]
-        public List<Rule> rule
-        {
-            get
-            {
-                return this.ruleField;
-            }
-            set
-            {
-                this.ruleField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class InfoLinkList
-    {
-
-        private List<InfoLink> infoLinkField;
-
-        public InfoLinkList()
-        {
-            this.infoLinkField = new List<InfoLink>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("infoLink", Order = 0)]
-        public List<InfoLink> infoLink
-        {
-            get
-            {
-                return this.infoLinkField;
-            }
-            set
-            {
-                this.infoLinkField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CategoryEntryList
-    {
-
-        private List<CategoryEntry> categoryEntryField;
-
-        public CategoryEntryList()
-        {
-            this.categoryEntryField = new List<CategoryEntry>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("categoryEntry", Order = 0)]
-        public List<CategoryEntry> categoryEntry
-        {
-            get
-            {
-                return this.categoryEntryField;
-            }
-            set
-            {
-                this.categoryEntryField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ForceEntryList
-    {
-
-        private List<ForceEntry> forceEntryField;
-
-        public ForceEntryList()
-        {
-            this.forceEntryField = new List<ForceEntry>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("forceEntry", Order = 0)]
-        public List<ForceEntry> forceEntry
-        {
-            get
-            {
-                return this.forceEntryField;
-            }
-            set
-            {
-                this.forceEntryField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class CostList
-    {
-
-        private List<Cost> costField;
-
-        public CostList()
-        {
-            this.costField = new List<Cost>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("cost", Order = 0)]
-        public List<Cost> cost
-        {
-            get
-            {
-                return this.costField;
-            }
-            set
-            {
-                this.costField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class SelectionEntryList
-    {
-
-        private List<SelectionEntry> selectionEntryField;
-
-        public SelectionEntryList()
-        {
-            this.selectionEntryField = new List<SelectionEntry>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("selectionEntry", Order = 0)]
-        public List<SelectionEntry> selectionEntry
-        {
-            get
-            {
-                return this.selectionEntryField;
-            }
-            set
-            {
-                this.selectionEntryField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "SelectionEntryGroupList", Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute("SelectionEntryGroupList", Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class SelectionEntryGroupList1
-    {
-
-        private List<SelectionEntryGroup> selectionEntryGroupField;
-
-        public SelectionEntryGroupList1()
-        {
-            this.selectionEntryGroupField = new List<SelectionEntryGroup>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("selectionEntryGroup", Order = 0)]
-        public List<SelectionEntryGroup> selectionEntryGroup
-        {
-            get
-            {
-                return this.selectionEntryGroupField;
-            }
-            set
-            {
-                this.selectionEntryGroupField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class EntryLinkList
-    {
-
-        private List<EntryLink> entryLinkField;
-
-        public EntryLinkList()
-        {
-            this.entryLinkField = new List<EntryLink>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("entryLink", Order = 0)]
-        public List<EntryLink> entryLink
-        {
-            get
-            {
-                return this.entryLinkField;
-            }
-            set
-            {
-                this.entryLinkField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ConstraintList
-    {
-
-        private List<Constraint> constraintField;
-
-        public ConstraintList()
-        {
-            this.constraintField = new List<Constraint>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("constraint", Order = 0)]
-        public List<Constraint> constraint
-        {
-            get
-            {
-                return this.constraintField;
-            }
-            set
-            {
-                this.constraintField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ModifierList
-    {
-
-        private List<Modifier> modifierField;
-
-        public ModifierList()
-        {
-            this.modifierField = new List<Modifier>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("modifier", Order = 0)]
-        public List<Modifier> modifier
-        {
-            get
-            {
-                return this.modifierField;
-            }
-            set
-            {
-                this.modifierField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class RepeatList
-    {
-
-        private List<Repeat> repeatField;
-
-        public RepeatList()
-        {
-            this.repeatField = new List<Repeat>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("repeat", Order = 0)]
-        public List<Repeat> repeat
-        {
-            get
-            {
-                return this.repeatField;
-            }
-            set
-            {
-                this.repeatField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ConditionList
-    {
-
-        private List<Condition> conditionField;
-
-        public ConditionList()
-        {
-            this.conditionField = new List<Condition>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("condition", Order = 0)]
-        public List<Condition> condition
-        {
-            get
-            {
-                return this.conditionField;
-            }
-            set
-            {
-                this.conditionField = value;
-            }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "ConditionGroupList", Namespace = "http://www.battlescribe.net/schema/catalogueSchema")]
-    [System.Xml.Serialization.XmlRootAttribute("ConditionGroupList", Namespace = "http://www.battlescribe.net/schema/catalogueSchema", IsNullable = true)]
-    public partial class ConditionGroupList1
-    {
-
-        private List<ConditionGroup> conditionGroupField;
-
-        public ConditionGroupList1()
-        {
-            this.conditionGroupField = new List<ConditionGroup>();
-        }
-
-        [System.Xml.Serialization.XmlElementAttribute("conditionGroup", Order = 0)]
-        public List<ConditionGroup> conditionGroup
-        {
-            get
-            {
-                return this.conditionGroupField;
-            }
-            set
-            {
-                this.conditionGroupField = value;
+                this.forcesField = value;
             }
         }
     }

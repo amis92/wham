@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.battlescribe.net/schema/catalogueSchema"
-           xmlns:cs="http://www.battlescribe.net/schema/catalogueSchema">
-  
+           targetNamespace="http://www.battlescribe.net/schema/rosterSchema"
+           xmlns:rs="http://www.battlescribe.net/schema/rosterSchema">
+
   <!--schema for BattleScribe [version 2.00, (c) Jon Taylor] catalogues-->
   <!--schema file author: Amadeusz Sadowski-->
 
   <xs:include schemaLocation="Datablob.xsd" />
 
-  <xs:element name="catalogue" type="cs:Catalogue" />
+  <xs:element name="roster" type="rs:Roster" />
 </xs:schema>
