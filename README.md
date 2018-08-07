@@ -79,11 +79,13 @@ You can always run `wham -?` or `wham -h` or `wham [action] -?` to get help abou
   This command outputs generated artifacts in the `artifacts/` directory by default,
   unless the `.whamproj` configuration specifies otherwise. Both can be overridden 
   by using `-d <Destination>` option, passing another directory path.
+
 * `wham convertxml [-s <Source>] [-d <Destination>]` converts xml workspace
   into *gitree* workspace. Parameters are directory paths
   (these default to working directory):
     * `Source` - containing XML/BattleScribe format workspace
     * `Destination` - where the *gitree* workspace will be rooted (and `.whamproj` written).
+
 * `wham convertgitree -s <Source> -d <Destination>` converts *gitree* workspace
   into xml/BattleScribe workspace model. Required parameters are directory paths:
     * `Source` - where the *gitree* workspace is rooted (and `.whamproj` exists)

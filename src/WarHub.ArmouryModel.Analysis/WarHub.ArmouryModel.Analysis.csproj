@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    
+    <Description>This package delivers analysis tools and APIs for `wham` libraries.</Description>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WarHub.ArmouryModel.ProjectModel\WarHub.ArmouryModel.ProjectModel.csproj" />
+    <ProjectReference Include="..\WarHub.ArmouryModel.Source\WarHub.ArmouryModel.Source.csproj" />
+  </ItemGroup>
+
+</Project>
