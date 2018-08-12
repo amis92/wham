@@ -21,7 +21,6 @@
         public const string IBuildable = "IBuildable";
         public const string ICore = "ICore";
         public const string INodeWithCore = "INodeWithCore";
-        public const string IContainer = "IContainer";
 
         public const string NodeCore = "NodeCore";
         public const string SourceNode = "SourceNode";
@@ -87,9 +86,7 @@
         public const string Children = "Children";
         public const string ChildrenCount = "ChildrenCount";
         public const string ChildrenInfos = "ChildrenInfos";
-        public const string SlotCount = "SlotCount";
         public const string GetChild = "GetChild";
-        public const string GetNodeSlot = "GetNodeSlot";
         public const string Count = "Count";
         public const string Accept = "Accept";
         public const string DefaultVisit = "DefaultVisit";

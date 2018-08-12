@@ -2,7 +2,7 @@
 
 namespace WarHub.ArmouryModel.Source
 {
-    internal struct NodeCollectionContainerProxy<TChildNode> : IContainer<TChildNode>
+    internal struct NodeCollectionContainerProxy<TChildNode> : IReadOnlyNodeList<TChildNode>
         where TChildNode : SourceNode
     {
         public NodeCollectionContainerProxy(ImmutableArray<TChildNode> nodes)
@@ -12,7 +12,9 @@ namespace WarHub.ArmouryModel.Source
 
         internal ImmutableArray<TChildNode> Nodes { get; }
 
-        public int SlotCount => Nodes.Length;
+        public int Count => Nodes.Length;
+
+        public TChildNode this[int index] => GetNodeSlot(index);
 
         public TChildNode GetNodeSlot(int index)
         {

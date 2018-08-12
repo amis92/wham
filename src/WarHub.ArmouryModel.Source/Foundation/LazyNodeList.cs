@@ -5,7 +5,7 @@ using System.Threading;
 namespace WarHub.ArmouryModel.Source
 {
     internal sealed class LazyNodeList<TNode, TCore>
-        : IContainer<TNode>, INodeListWithCoreArray<TNode, TCore>
+        : IReadOnlyNodeList<TNode>, INodeListWithCoreArray<TNode, TCore>
         where TNode : SourceNode, INodeWithCore<TCore>
         where TCore : ICore<TNode>
     {
@@ -22,7 +22,9 @@ namespace WarHub.ArmouryModel.Source
 
         public ImmutableArray<TCore> Cores { get; }
 
-        public int SlotCount => Cores.Length;
+        public int Count => Cores.Length;
+
+        public TNode this[int index] => GetNodeSlot(index);
 
         public TNode GetNodeSlot(int index)
         {
@@ -36,7 +38,7 @@ namespace WarHub.ArmouryModel.Source
             return value;
         }
 
-        private class OneElementList : IContainer<TNode>, INodeListWithCoreArray<TNode, TCore>
+        private class OneElementList : IReadOnlyNodeList<TNode>, INodeListWithCoreArray<TNode, TCore>
         {
             public OneElementList(ImmutableArray<TCore> cores, SourceNode parent)
             {
@@ -46,11 +48,13 @@ namespace WarHub.ArmouryModel.Source
 
             private TNode _node;
 
-            public int SlotCount => 1;
+            public int Count => 1;
 
             private SourceNode Parent { get; }
 
             private ImmutableArray<TCore> Cores { get; }
+
+            public TNode this[int index] => GetNodeSlot(index);
 
             ImmutableArray<TCore> INodeListWithCoreArray<TNode, TCore>.Cores => Cores;
 
@@ -58,14 +62,14 @@ namespace WarHub.ArmouryModel.Source
             {
                 if (_node == null)
                 {
-                    Interlocked.CompareExchange(ref _node, Cores[0].ToNode(Parent), null);
+                    Interlocked.CompareExchange(ref _node, Cores[index].ToNode(Parent), null);
                     _node._indexInParent = index;
                 }
                 return _node;
             }
         }
 
-        private class TwoElementList : IContainer<TNode>, INodeListWithCoreArray<TNode, TCore>
+        private class TwoElementList : IReadOnlyNodeList<TNode>, INodeListWithCoreArray<TNode, TCore>
         {
             public TwoElementList(ImmutableArray<TCore> cores, SourceNode parent)
             {
@@ -76,11 +80,13 @@ namespace WarHub.ArmouryModel.Source
             private TNode _node0;
             private TNode _node1;
 
-            public int SlotCount => 2;
+            public int Count => 2;
 
             private SourceNode Parent { get; }
 
             private ImmutableArray<TCore> Cores { get; }
+
+            public TNode this[int index] => GetNodeSlot(index);
 
             ImmutableArray<TCore> INodeListWithCoreArray<TNode, TCore>.Cores => Cores;
 
@@ -106,7 +112,7 @@ namespace WarHub.ArmouryModel.Source
             }
         }
 
-        private class ThreeElementList : IContainer<TNode>, INodeListWithCoreArray<TNode, TCore>
+        private class ThreeElementList : IReadOnlyNodeList<TNode>, INodeListWithCoreArray<TNode, TCore>
         {
             public ThreeElementList(ImmutableArray<TCore> cores, SourceNode parent)
             {
@@ -118,11 +124,13 @@ namespace WarHub.ArmouryModel.Source
             private TNode _node1;
             private TNode _node2;
 
-            public int SlotCount => 3;
+            public int Count => 3;
 
             private SourceNode Parent { get; }
 
             private ImmutableArray<TCore> Cores { get; }
+
+            public TNode this[int index] => GetNodeSlot(index);
 
             ImmutableArray<TCore> INodeListWithCoreArray<TNode, TCore>.Cores => Cores;
 
@@ -149,7 +157,7 @@ namespace WarHub.ArmouryModel.Source
             }
         }
 
-        internal static IContainer<TNode> CreateContainer(ImmutableArray<TCore> cores, SourceNode parent)
+        internal static IReadOnlyNodeList<TNode> CreateContainer(ImmutableArray<TCore> cores, SourceNode parent)
         {
             switch (cores.Length)
             {

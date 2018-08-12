@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WarHub.ArmouryModel.Source
 {
+    /// <summary>
+    /// Provides static creation methods for all types of <see cref="SourceNode"/>.
+    /// </summary>
     public partial class NodeFactory
     {
         public static CatalogueNode Catalogue(string id, string name, string gameSystemId)

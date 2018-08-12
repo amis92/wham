@@ -5,8 +5,13 @@ using MoreLinq;
 
 namespace WarHub.ArmouryModel.Source
 {
-    public abstract class ListNode<TChild> : SourceNode, IListNode, IReadOnlyList<TChild>
-        where TChild : SourceNode
+    /// <summary>
+    /// An abstract base class for source node that represents
+    /// a set of other nodes of the same type.
+    /// </summary>
+    /// <typeparam name="T">Type of all child nodes.</typeparam>
+    public abstract class ListNode<T> : SourceNode, IListNode, IReadOnlyList<T>
+        where T : SourceNode
     {
         protected ListNode(SourceNode parent) : base(null, parent)
         {
@@ -30,7 +35,7 @@ namespace WarHub.ArmouryModel.Source
         /// <summary>
         /// Gets a list of this node's child elements.
         /// </summary>
-        public abstract NodeList<TChild> NodeList { get; }
+        public abstract NodeList<T> NodeList { get; }
 
         NodeList<SourceNode> IListNode.NodeList => NodeList;
 
@@ -39,7 +44,16 @@ namespace WarHub.ArmouryModel.Source
         /// </summary>
         /// <param name="index">0-based index of element in this list.</param>
         /// <returns>Retrieved child element.</returns>
-        public TChild this[int index] => (TChild)GetChild(index);
+        public T this[int index] => (T)GetChild(index);
+
+        /// <summary>
+        /// Creates a new list node of the same type, but with a new set
+        /// of child nodes.
+        /// </summary>
+        /// <param name="nodes">The nodes to become children of the new node.</param>
+        /// <returns>The newly created <see cref="ListNode{T}"/>,
+        /// being of the same type as this instance.</returns>
+        public abstract ListNode<T> WithNodes(NodeList<T> nodes);
 
         public override IEnumerable<SourceNode> Children() => NodeList;
 
@@ -49,13 +63,11 @@ namespace WarHub.ArmouryModel.Source
                 .Select(x => new ChildInfo(x.Key.ToString(), x.Value));
         }
 
-        public abstract ListNode<TChild> WithNodes(NodeList<TChild> nodes);
-
         protected internal override int ChildrenCount => NodeList.Count;
 
         protected internal override SourceNode GetChild(int index) => NodeList[index];
 
-        public IEnumerator<TChild> GetEnumerator() => NodeList.GetEnumerator();
+        public IEnumerator<T> GetEnumerator() => NodeList.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

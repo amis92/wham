@@ -10,12 +10,12 @@
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\ChildInfo.cs" Link="Foundation\ChildInfo.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\IBuildable.cs" Link="Foundation\IBuildable.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\IBuilder.cs" Link="Foundation\IBuilder.cs" />
-    <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\IContainer.cs" Link="Foundation\IContainer.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\ICore.cs" Link="Foundation\ICore.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\IListNode.cs" Link="Foundation\IListNode.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\ImmutableExtensions.cs" Link="Foundation\ImmutableExtensions.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\INodeListWithCoreArray.cs" Link="Foundation\INodeListWithCoreArray.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\INodeWithCore.cs" Link="Foundation\INodeWithCore.cs" />
+    <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\IReadOnlyNodeList.cs" Link="Foundation\IReadOnlyNodeList.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\LazyNodeList.cs" Link="Foundation\LazyNodeList.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\ListNode.cs" Link="Foundation\ListNode.cs" />
     <Compile Include="..\..\src\WarHub.ArmouryModel.Source\Foundation\NodeCollectionContainerProxy.cs" Link="Foundation\NodeCollectionContainerProxy.cs" />

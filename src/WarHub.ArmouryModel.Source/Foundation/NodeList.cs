@@ -13,18 +13,18 @@ namespace WarHub.ArmouryModel.Source
     {
         // TODO a lot of optimizations here
 
-        internal NodeList(IContainer<TNode> container)
+        internal NodeList(IReadOnlyNodeList<TNode> container)
         {
             Container = container;
         }
 
-        internal IContainer<TNode> Container { get; }
+        internal IReadOnlyNodeList<TNode> Container { get; }
 
-        public TNode this[int index] => Container.GetNodeSlot(index);
+        public TNode this[int index] => Container[index];
 
-        public int Count => Container?.SlotCount ?? 0;
+        public int Count => Container?.Count ?? 0;
 
-        IContainer<TNode> IContainerProvider<TNode>.Container => Container;
+        IReadOnlyNodeList<TNode> IContainerProvider<TNode>.Container => Container;
 
         public IEnumerator<TNode> GetEnumerator()
         {
@@ -86,7 +86,7 @@ namespace WarHub.ArmouryModel.Source
     }
     internal interface IContainerProvider<out TNode> where TNode : SourceNode
     {
-        IContainer<TNode> Container { get; }
+        IReadOnlyNodeList<TNode> Container { get; }
     }
 
 
@@ -188,7 +188,7 @@ namespace WarHub.ArmouryModel.Source
             return builder.MoveToImmutable();
         }
 
-        private static IContainer<TNode> CreateContainerForNodeArray<TNode>(ImmutableArray<TNode> nodes)
+        private static IReadOnlyNodeList<TNode> CreateContainerForNodeArray<TNode>(ImmutableArray<TNode> nodes)
             where TNode : SourceNode
         {
             return new NodeCollectionContainerProxy<TNode>(nodes);
